@@ -43,6 +43,7 @@ export const login = (req, res) => {
     // Create a JWT token with the user's id
     const token = jwt.sign({ id: user.id }, "jwtkey");
     // Set the JWT token as a cookie and send 200 status with user data
+    // 当前实在服务器端设置的token 不允许跨域发送到客户端
     res
       .cookie("access_token", token, {
         httpOnly: true,
